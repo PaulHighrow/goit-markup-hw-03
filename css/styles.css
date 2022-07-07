@@ -1,0 +1,250 @@
+:root {
+  /* Переменные цветов */
+
+  --main-color: #757575;
+  --secondary-color: #212121;
+  --triary-color: #ffffff;
+  --bg-color: #2f303a;
+  --secondary-bg-color: #f5f4fa;
+  --logo-color: #000000;
+  --accent-color: #2196f3;
+  --secondary-accent-color: #188ce8;
+
+  /* Переменные шрифтов */
+  --main-font-family: 'Roboto', sans-serif;
+  --secondary-font-family: 'Raleway', sans-serif;
+}
+
+/* Наследуемые стили */
+body {
+  font-family: var(--main-font-family);
+  color: var(--main-color);
+  letter-spacing: 0.03em;
+}
+
+/* =============== Стили шапки =============== */
+
+/* Стили логотипа студии в шапке */
+.logo {
+  font-family: var(--secondary-font-family);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.19;
+}
+/* Цвет логотипа в шапке  */
+.header.logo {
+  color: var(--logo-color);
+}
+
+/* Сброс подчеркивания для ссылок */
+.link {
+  text-decoration: none;
+}
+
+/* Шрифты шапки */
+.site-nav,
+.contacts-nav {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+}
+
+/* Цвета элементов шапки */
+.site-nav .link {
+  color: var(--secondary-color);
+}
+
+.contacts-nav .link {
+  color: var(--main-color);
+}
+
+.logo-web {
+  color: var(--accent-color);
+}
+
+/* Отметка текущей страницы */
+.link.current {
+  color: var(--accent-color);
+}
+
+/* Уникальный символьный интервал в шапке */
+.site-nav,
+.contacts-nav {
+  list-style: none;
+  letter-spacing: 0.02em;
+}
+
+/* =============== Стили контента главной страницы =============== */
+/* =============== Герой =============== */
+
+.hero {
+  background-color: var(--bg-color);
+  color: var(--triary-color);
+  line-height: 1.36;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Стили шрифта, которые заголовок не может унаследовать */
+.hero-title {
+  font-weight: 900;
+  font-size: 44px;
+}
+
+/* Кнопка-герой */
+.btn.order {
+  color: var(--triary-color);
+  background-color: var(--accent-color);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: inherit;
+}
+
+/* Эффекты кнопки-героя */
+.btn.order:hover,
+.btn.order:focus {
+  background-color: var(--secondary-accent-color);
+}
+
+/* =============== Особенности компании =============== */
+/* Сброс маркеров списков */
+.list {
+  list-style: none;
+}
+
+/* Стиль заголовков списка особенностей */
+.feature-title {
+  color: var(--secondary-color);
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+}
+
+/* Стиль текста списка */
+.feature-text {
+  font-size: 14px;
+  line-height: 1.71;
+}
+
+/* =============== Чем мы занимаемся =============== */
+/* Стиль заголовков списка скиллов и команды */
+.skills-title,
+.team-title {
+  color: var(--secondary-color);
+  font-size: 36px;
+  line-height: 1.17;
+  text-align: center;
+}
+
+/* =============== Команда =============== */
+/* Фон секции */
+.team {
+  background-color: var(--secondary-bg-color);
+}
+
+/* Имена сотрудников */
+.team-name {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+}
+
+/* Должности */
+.team-job {
+  font-size: 16px;
+  line-height: 1.19;
+}
+
+/* Центрирование имен и должностей сотрудников  */
+.team-name,
+.team-job {
+  text-align: center;
+}
+
+/* =============== Футер =============== */
+/* Цвет фона */
+.footer {
+  background-color: var(--bg-color);
+}
+
+/* Цвет логотипа в футере */
+.footer.logo {
+  color: var(--triary-color);
+}
+
+/* Сброс курсива элемента address */
+.contacts-footer {
+  font-style: normal;
+}
+
+/* Стили элемента address, уникальный цвет с макета */
+.contacts-footer .link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.71;
+}
+
+/* Цвет адреса */
+.link.map {
+  color: var(--triary-color);
+}
+
+/* Эффекты hover и focus для всех ссылок */
+.link:hover,
+.link:focus {
+  color: var(--accent-color);
+}
+
+/* =============== Стили контента страницы портфолио =============== */
+/* =============== Стили фильтра =============== */
+
+/* Стили кнопок фильтра */
+.btn {
+  color: var(--secondary-color);
+  background-color: var(--secondary-bg-color);
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.62;
+  letter-spacing: inherit;
+}
+
+/* Эффект кнопки, выбранной по умолчанию */
+.btn.current {
+  color: var(--triary-color);
+  background-color: var(--accent-color);
+}
+
+/* Эффекты кнопок фильтра */
+.btn:hover,
+.btn:focus,
+.btn:active {
+  color: var(--triary-color);
+  background-color: var(--accent-color);
+}
+
+/* =============== Стили карточек =============== */
+
+/* Сброс подчеркивания для ссылок карточек */
+.card-link {
+  text-decoration: none;
+}
+
+/* Стили заголовков карточек */
+.card-title {
+  color: var(--secondary-color);
+  font-size: 18px;
+  line-height: 2;
+  letter-spacing: 0.06em;
+}
+
+/* Стили категорий карточек */
+.card-category {
+  color: var(--main-color);
+  font-size: 16px;
+  line-height: 1.88;
+}
