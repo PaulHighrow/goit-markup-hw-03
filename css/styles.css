@@ -9,10 +9,16 @@
   --logo-color: #000000;
   --accent-color: #2196f3;
   --secondary-accent-color: #188ce8;
+  --header-border: #ececec;
+  --card-border: #eeeeee;
 
   /* Переменные шрифтов */
   --main-font-family: 'Roboto', sans-serif;
   --secondary-font-family: 'Raleway', sans-serif;
+
+  /* Переменные отступов между элементами сеток */
+  --indent: 30px;
+  --filter-indent: 8px;
 }
 
 /* Наследуемые стили */
@@ -22,7 +28,82 @@ body {
   letter-spacing: 0.03em;
 }
 
+/* Сброс встроенной геометрии для заголовков, абзацев и списков */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Сброс четырехпиксельных зазоров у изображений */
+img {
+  display: block;
+}
+
+/* Класс для скрытых заголовков */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* Сброс маркеров списков */
+.list {
+  list-style: none;
+}
+
+/* Сброс подчеркивания для ссылок */
+.link {
+  text-decoration: none;
+}
+
+/* Размеры и отступы контейнеров контента */
+.container {
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+/* Вертикальное наполнение секций */
+.section {
+  padding-top: 94px;
+  padding-bottom: 94px;
+}
+
+/* Общая формула для масштабирования ширины элементов сеток */
+.item {
+  flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+}
+
 /* =============== Стили шапки =============== */
+
+/* Нижняя рамка шапки */
+.header.border {
+  border-bottom: 1px solid var(--header-border);
+}
+
+/* Смена типа отображения элементов шапки */
+.header.container {
+  display: flex;
+  align-items: center;
+  /* Компенсируем лишний пиксель высоты элемента из-за рамки */
+  margin-bottom: -1px;
+}
 
 /* Стили логотипа студии в шапке */
 .logo {
@@ -31,22 +112,35 @@ body {
   font-size: 26px;
   line-height: 1.19;
 }
-/* Цвет логотипа в шапке  */
+
+/* Цвет и отступ логотипа в шапке  */
 .header.logo {
+  margin-right: 93px;
   color: var(--logo-color);
 }
 
-/* Сброс подчеркивания для ссылок */
-.link {
-  text-decoration: none;
-}
-
-/* Шрифты шапки */
+/* Списки шапки */
 .site-nav,
 .contacts-nav {
+  /* Расположение элементов шапки */
+  display: flex;
+  margin-left: auto;
+  gap: 50px;
+
+  /* Шрифт шапки */
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
+
+  /* Уникальный символьный интервал в шапке */
+  letter-spacing: 0.02em;
+}
+
+/* Активная область ссылок навигации */
+.site-nav .link,
+.contacts-nav .link {
+  display: block;
+  padding: 32px 0;
 }
 
 /* Цвета элементов шапки */
@@ -67,13 +161,6 @@ body {
   color: var(--accent-color);
 }
 
-/* Уникальный символьный интервал в шапке */
-.site-nav,
-.contacts-nav {
-  list-style: none;
-  letter-spacing: 0.02em;
-}
-
 /* =============== Стили контента главной страницы =============== */
 /* =============== Герой =============== */
 
@@ -86,20 +173,39 @@ body {
   text-transform: uppercase;
 }
 
-/* Стили шрифта, которые заголовок не может унаследовать */
+/* Подгон размеров блока героя до значений макета */
+.hero.section {
+  padding: 200px 0;
+}
+
+/* Заголовок героя */
 .hero-title {
+  /* Ширина и центрирование элемента */
+  width: 696px;
+  margin: auto;
+  margin-bottom: 30px;
+
+  /* Стили шрифта, которые заголовок не может унаследовать */
   font-weight: 900;
   font-size: 44px;
 }
 
 /* Кнопка-герой */
 .btn.order {
-  color: var(--triary-color);
-  background-color: var(--accent-color);
+  /* Размеры, рамка и отступы кнопки */
+  padding: 10px 32px;
+  border-radius: 4px;
+  border: none;
+
+  /* Шрифт кнопки */
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
   letter-spacing: inherit;
+
+  /* Цвета кнопки */
+  color: var(--triary-color);
+  background-color: var(--accent-color);
 }
 
 /* Эффекты кнопки-героя */
@@ -109,33 +215,63 @@ body {
 }
 
 /* =============== Особенности компании =============== */
-/* Сброс маркеров списков */
-.list {
-  list-style: none;
+/* Смена типа отображения списка особенностей */
+.feature.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent);
+}
+
+/* Переменная количества элементов в строке секции особенностей */
+.feature.item {
+  --items: 4;
 }
 
 /* Стиль заголовков списка особенностей */
 .feature-title {
-  color: var(--secondary-color);
+  margin-bottom: 10px;
+
   font-size: 14px;
   line-height: 1.14;
   text-transform: uppercase;
+
+  color: var(--secondary-color);
 }
 
 /* Стиль текста списка */
 .feature-text {
   font-size: 14px;
-  line-height: 1.71;
+  line-height: calc(24 / 14);
 }
 
 /* =============== Чем мы занимаемся =============== */
 /* Стиль заголовков списка скиллов и команды */
 .skills-title,
 .team-title {
-  color: var(--secondary-color);
+  margin-bottom: 50px;
+
   font-size: 36px;
   line-height: 1.17;
   text-align: center;
+
+  color: var(--secondary-color);
+}
+
+/* Выравнивание отступа от границы секции для обеспечения правильного расстояния между контейнерами */
+.skills.section {
+  padding-top: 0;
+}
+
+/* Расположение элементов по горизонтали и отступы */
+.skills.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent);
+}
+
+/* Переменная количества элементов в строке секции скиллов */
+.skills.item {
+  --items: 3;
 }
 
 /* =============== Команда =============== */
@@ -144,12 +280,34 @@ body {
   background-color: var(--secondary-bg-color);
 }
 
+/* Расположение элементов по горизонтали и отступы */
+.team.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent);
+}
+
+/* Фон и закругленные нижние рамки карточек сотрудников */
+.team-card {
+  background-color: var(--triary-color);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Переменная количества элементов в строке секции команды */
+.team-card.item {
+  --items: 4;
+}
+
 /* Имена сотрудников */
 .team-name {
-  color: var(--secondary-color);
+  margin-bottom: 10px;
+
   font-weight: 500;
   font-size: 16px;
   line-height: 1.19;
+
+  color: var(--secondary-color);
 }
 
 /* Должности */
@@ -164,15 +322,31 @@ body {
   text-align: center;
 }
 
-/* =============== Футер =============== */
-/* Цвет фона */
-.footer {
-  background-color: var(--bg-color);
+/* Вертикальные поля текста карточек сотрудников */
+.team-card-description {
+  padding: 30px 0;
 }
 
-/* Цвет логотипа в футере */
+/* =============== Футер =============== */
+/* Цвет и отступы фона */
+.footer:not(.logo) {
+  background-color: var(--bg-color);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Цвет и отступ логотипа в футере */
 .footer.logo {
+  display: block;
+  margin-bottom: 20px;
+
   color: var(--triary-color);
+}
+
+/* Отступы между элементами списка, кроме последнего */
+.footer-item:not(:last-child) {
+  display: block;
+  margin-bottom: 9px;
 }
 
 /* Сброс курсива элемента address */
@@ -192,25 +366,38 @@ body {
   color: var(--triary-color);
 }
 
-/* Эффекты hover и focus для всех ссылок */
-.link:hover,
-.link:focus {
+/* Эффекты hover и focus для всех ссылок, кроме логотипа */
+.link:hover:not(.logo),
+.link:focus:not(.logo) {
   color: var(--accent-color);
 }
 
 /* =============== Стили контента страницы портфолио =============== */
 /* =============== Стили фильтра =============== */
 
+/* Расположение кнопок фильтра */
+.filter.list {
+  display: flex;
+  justify-content: center;
+  gap: var(--filter-indent);
+  margin-bottom: 50px;
+}
+
 /* Стили кнопок фильтра */
 .btn {
-  color: var(--secondary-color);
-  background-color: var(--secondary-bg-color);
+  padding: 6px 22px;
+
   font-family: inherit;
   font-weight: 500;
   cursor: pointer;
   font-size: 16px;
   line-height: 1.62;
   letter-spacing: inherit;
+
+  color: var(--secondary-color);
+  background-color: var(--secondary-bg-color);
+  border: none;
+  border-radius: 4px;
 }
 
 /* Эффект кнопки, выбранной по умолчанию */
@@ -228,10 +415,29 @@ body {
 }
 
 /* =============== Стили карточек =============== */
+.project.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--indent);
+}
+
+/* Переменная количества элементов в строке секции портфолио */
+.project-card.item {
+  --items: 3;
+}
 
 /* Сброс подчеркивания для ссылок карточек */
 .card-link {
   text-decoration: none;
+}
+
+/* Стили контейнера для подписей карточек */
+.card-description {
+  padding: 20px 24px;
+  border: 1px solid var(--card-border);
+  border-top: none;
+  /* Компенсируем лишний пиксель высоты элемента из-за рамки */
+  margin-bottom: -1px;
 }
 
 /* Стили заголовков карточек */
@@ -240,6 +446,7 @@ body {
   font-size: 18px;
   line-height: 2;
   letter-spacing: 0.06em;
+  margin-bottom: 4px;
 }
 
 /* Стили категорий карточек */
